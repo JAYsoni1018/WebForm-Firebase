@@ -1,13 +1,13 @@
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBLFVn6oa2Zu906wX27_DjdzeVHU549Eoc",
-  authDomain: "webform-34f06.firebaseapp.com",
-  databaseURL: "https://webform-34f06-default-rtdb.firebaseio.com",
-  projectId: "webform-34f06",
-  storageBucket: "webform-34f06.appspot.com",
-  messagingSenderId: "802921416313",
-  appId: "1:802921416313:web:df80cb5b9b466c592e76a8"
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: ""
 };
 firebase.initializeApp(firebaseConfig);
 var db = firebase.database().ref("webform");    //webform is my firebase project name 
