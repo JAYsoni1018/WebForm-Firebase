@@ -1,0 +1,78 @@
+ <!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form with Shake Effect | CodingNepal</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js"></script>
+
+</head>
+<!-- <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+  import { getDatabase } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+  import { getAuth  } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+ 
+
+  
+</script> -->
+
+<body >
+  <div class="wrapper">
+    <header>SignUp Form</header>
+    <form action="#">
+      <div class="field username">
+        <div class="input-area">
+          <input type="text" id="uname" placeholder="User Name">
+          <i class="icon fas fa-user"></i>
+        </div>
+        <div class="error error-txt">Username can't be blank</div>
+      </div>
+      <div class="field mobile">
+        <div class="input-area">
+          <input type="tel" id="mob" placeholder="Mobile No">
+          <i class="icon fas fa-phone"></i>
+        </div>
+        <div class="error error-txt">Phone Number can't be blank</div>
+      </div>
+      <div class="field email">
+        <div class="input-area">
+          <input type="text" id="email" placeholder="Email Address">
+          <i class="icon fas fa-envelope"></i>
+        </div>
+        <div class="error error-txt">Email can't be blank</div>
+      </div>
+      <div class="field password">
+        <div class="input-area">
+          <input type="password" id="pass" placeholder="Password">
+          <i class="icon fas fa-lock"></i>
+        </div>
+        <div class="error error-txt">Password can't be blank</div>
+      </div>
+      <div class="field cpassword">
+        <div class="input-area">
+          <input type="password" id="cpass" placeholder="Confirm Password">
+          <i class="icon fas fa-lock"></i>
+        </div>
+        <div class="error error-txt">Confirm Password can't be blank</div>
+      </div>
+      <div class="pass-txt"><a href="#">Forgot password?</a></div>
+      <input type="submit" onclick="register()" value="SignUp">
+      <!-- <button type="submit" onclick="register()">SignUp</button> -->
+    </form>
+    <div class="sign-txt">Not yet member? <a href="login.html">Login</a></div>
+  </div>
+
+  
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-auth.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-database.js"></script>
+<script src="script.js" ></script>
+
+</html>
