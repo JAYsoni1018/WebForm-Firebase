@@ -1,16 +1,19 @@
 <!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Form with Shake Effect</title>
+  <title>Login Form with Shake Effect | CodingNepal</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+
 </head>
 <body>
   <div class="wrapper">
     <header>Login Form</header>
-    <form action="#">
+    <form    action="">
       <div class="field email">
         <div class="input-area">
           <input type="text" id="email" placeholder="Email Address">
@@ -33,7 +36,21 @@
     <div class="sign-txt">Not yet member? <a href="signup.html">Signup now</a></div>
   </div>
 
+  <section>
+    <!-- <button class="show-modal">Show Modal</button> -->
+    <span class="overlay"></span>
 
+    <div class="modal-box">
+      <div class="data">
+      
+
+      </div>
+
+      <div class="buttons">
+        <button class="close-btn">OK</button>
+      </div>
+    </div>
+  </section>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-app.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-auth.js"></script>
