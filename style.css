@@ -143,3 +143,126 @@ form input[type="submit"]{
 form input[type="submit"]:hover{
   background: #2c52ed;
 }
+
+/* pop-up */
+ 
+
+/* .popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.popup-content {
+  background: #fff;
+  width: 60%;
+  max-width: 400px;
+  margin: 20% auto;
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+  */
+
+section {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+ 
+}
+button {
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  padding: 23px 28px;
+  border: none;
+  background: #4070f4;
+  border-radius: 6px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #265df2;
+}
+button.show-modal,
+.modal-box {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+section.active .show-modal {
+  display: none;
+}
+.overlay {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  pointer-events: none;
+}
+section.active .overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 450px;
+  width: 100%;
+  padding: 45px 20px;
+  border-radius: 24px;
+  background-color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  transform: translate(-50%, -50%) scale(1.2);
+}
+section.active .modal-box {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+.modal-box i {
+  font-size: 70px;
+    display: flex;
+  justify-content: center; /* Horizontally center the icon */
+  align-items: center;    /* Vertically center the icon */
+}
+.modal-box h2 {
+  margin-top: 20px;
+  font-size: 25px;
+  font-weight: 500;
+  color: #333;
+}
+.modal-box h3 {
+  margin-top:5px;
+  font-size: 21px;
+  font-weight: 400;
+  text-align: center;
+}
+.modal-box .buttons {
+  margin-top: 25px;
+}
+.modal-box button {
+  font-size: 14px;
+  background: #134fe7;
+cursor:"pointer";
+  padding: 14px 30px;
+  margin: 0 10px;
+} 
