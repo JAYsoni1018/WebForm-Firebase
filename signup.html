@@ -1,14 +1,18 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Form with Shake Effect </title>
+  <title>Login Form with Shake Effect | CodingNepal</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" /> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+
   <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js"></script>
 
 </head>
 <!-- <script type="module">
@@ -20,7 +24,7 @@
   
 </script> -->
 
-<body >
+<body>
   <div class="wrapper">
     <header>SignUp Form</header>
     <form action="#">
@@ -66,12 +70,37 @@
     <div class="sign-txt">Not yet member? <a href="login.html">Login</a></div>
   </div>
 
-  
+  <section>
+    <!-- <button class="show-modal">Show Modal</button> -->
+    <span class="overlay"></span>
+
+    <div class="modal-box">
+      <div class="data">
+      
+
+      </div>
+
+      <div class="buttons">
+        <button class="close-btn">Ok</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- <div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="close" id="closePopup">&times;</span>
+      <h2>Dynamic Pop-up</h2>
+      <p class="msg-txt"></p>
+      <div class="buttons">
+        <button class="close-btn">Ok</button>
+      </div>
+    </div>
+  </div> -->
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-app.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-auth.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-database.js"></script>
-<script src="script.js" ></script>
+<script src="script.js"></script>
 
 </html>
