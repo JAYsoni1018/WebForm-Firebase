@@ -29,6 +29,7 @@ function register() {
     (pField = form.querySelector(".password")),
     (cpField = form.querySelector(".cpassword"))
   validate_user(user);
+  validate_key(pass);
   validate_mobile(mob);
   validate_email(email);
   validate_password(pass, cpass);
@@ -41,22 +42,63 @@ function register() {
 
       // add to firebase database
       var user_data = {
-        UserName: user,
-        Mobile_Number: mob,
-        Email: email,
+        Confirm_Password: cpass,
         Password: pass,
-        Confirm_Password: cpass
+        Email: email,
+        Mobile_Number: mob,
+        UserName: user,
+        id: newuser.uid
       };
-      db.child("users/" + newuser.uid).set(user_data);
-      alert("User created!!");
+      db.child("users/" + user).set(user_data);
+      // alert("User created!!");
+      display_pop_up("User Created Successfully. Please Login.", "success");
+
     })
       .catch(function (error) {
         var error_code = error.code;
         var error_message = error.message;
-        alert(error_message);
+        display_pop_up(error_message, "error");
+
+        // alert(error_message);/
       })
   }
 }
+
+
+
+function display_pop_up(msg, mode) {
+  const section = document.querySelector("section"),
+    overlay = document.querySelector(".overlay"),
+    data = document.querySelector('.data')
+  data.innerHTML = '';
+  closeBtn = document.querySelector(".close-btn");
+  section.classList.add("active");
+  if (mode === "success") {
+    data.innerHTML = `
+  <i class="fa-regular fa-circle-check fa-bounce" style="color: #01aa5b;"></i>
+  <h3 class="msg-txt" style="color:green"></h3>
+
+  `
+  }
+  else if (mode === "error") {
+    data.innerHTML = `
+  <i class="fa-solid fa-circle-exclamation fa-bounce" style="color: #f21818;"></i>
+  <h3 class="msg-txt" style="color:red"></h3>
+  `
+  }
+  const txt = document.querySelector(".msg-txt");
+  txt.innerHTML = `${msg}`;
+
+  overlay.addEventListener("click", () =>
+    section.classList.remove("active")
+  );
+
+  closeBtn.addEventListener("click", () =>
+    section.classList.remove("active")
+  );
+}
+
+
 function login() {
   var email = document.getElementById("email").value;
   var pass = document.getElementById("pass").value;
@@ -84,109 +126,132 @@ function login() {
       //   Confirm_Password: cpass
       // };
       // db.child("users/" + newuser.uid).set(user_data);   //write update in place of set if u want to update database on login
-      alert("User logged in!!");
+      // alert("User logged in!!");
+      display_pop_up("User Login Successfully.", "success");
+
     })
       .catch(function (error) {
         var error_code = error.code;
         var error_message = error.message;
-        alert(error_message);
+        // alert(error_message);
+        display_pop_up(error_message, "error");
+
       })
   }
 
 
 }
-function validate_key(pass) {
-  if (pass.length > 6) {
-    pField.classList.remove("error");
-    pField.classList.add("valid");
+function validate_password(pass, cpass) {
+  if (pass.length >= 6 && cpass.length >= 6 && pass === cpass) {
+
+    cpField.classList.remove("error");
+    cpField.classList.add("valid");
     return true;
   } else {
 
-    pField.classList.add("error");
-    pField.classList.remove("valid");
-    if (pass != "") {
-      pField.classList.remove("error");
-      pField.classList.add("valid");
+    cpField.classList.add("error");
+    cpField.classList.remove("valid");
+    let errorTxt2 = cpField.querySelector(".error-txt");
+    if (pass !== cpass) {
+      errorTxt2.innerText = "Confirm password must be the same as the password";
+    } else {
+      errorTxt2.innerText = "";
     }
-
     return false;
   }
 }
+
+
+
+function validate_key(pass) {
+  if (pass.length >= 6) {
+
+    pField.classList.remove("error");
+    pField.classList.add("valid");
+
+    return true;
+  } else {
+    if (pass.length === 0) {
+      pField.classList.remove("valid");
+      pField.classList.add("error");
+      let errorTxt1 = pField.querySelector(".error-txt");
+      errorTxt1.innerText = "Password can't be blank";
+    }
+    else {
+      pField.classList.add("error");
+      pField.classList.remove("valid");
+      let errorTxt1 = pField.querySelector(".error-txt");
+      errorTxt1.innerText = "Password length must be at least 6 characters";
+      return false;
+    }
+
+  }
+}
+
 function validate_user(user) {
   const usernameRegex = /^[a-zA-Z0-9]+$/;
   if (usernameRegex.test(user)) {
     uField.classList.remove("error");
     uField.classList.add("valid");
     return true;
-  } else {
+  } else if (user.length == 0) {
+    uField.classList.add("error");
+    uField.classList.remove("valid");
+    return false;
 
+  }
+
+  else {
     uField.classList.add("error");
     uField.classList.remove("valid");
     let errorTxt5 = uField.querySelector(".error-txt");
-    user != "" ? (errorTxt5.innerText = "Enter a valid User Name") : "";
+    errorTxt5.innerText = "Enter a valid User Name";
     return false;
   }
 }
+
 function validate_email(email) {
   expression = /^[^@]+@\w+(\.\w+)+\w$/;
-  if (expression.test(email) == true) {
-
+  if (expression.test(email)) {
     eField.classList.remove("error");
     eField.classList.add("valid");
     return true;
-  } else {
+  }
+
+  else if (email.length == 0) {
+    eField.classList.add("error");
+    eField.classList.remove("valid");
+    return false;
+
+  }
+  else {
     eField.classList.add("error");
     eField.classList.remove("valid");
     let errorTxt = eField.querySelector(".error-txt");
-    email != "" ? (errorTxt.innerText = "Enter a valid email address") : "";
+    errorTxt.innerText = "Enter a valid email address";
     return false;
   }
 }
-function validate_password(pass, cpass) {
-  if (pass.length > 6 && cpass.length > 6 && pass === cpass) {
-    // console.log("yes");
-    pField.classList.remove("error");
-    pField.classList.add("valid");
-    cpField.classList.remove("error");
-    cpField.classList.add("valid");
-    return true;
-  } else {
-    // console.log("no");
 
-    pField.classList.add("error");
-    pField.classList.remove("valid");
-    cpField.classList.add("error");
-    cpField.classList.remove("valid");
-    let errorTxt1 = pField.querySelector(".error-txt");
-    let errorTxt2 = cpField.querySelector(".error-txt");
-    if (pass != "") {
-      pField.classList.remove("error");
-      pField.classList.add("valid");
-    }
-    cpass != ""
-      ? (errorTxt2.innerText =
-        "Confirm password must be same as above password")
-      : "";
-    return false;
-  }
-}
+
 function validate_mobile(mob) {
-  let c = 0;
-  var i;
-  for (i = 0; i < mob.length; i++) {
-    if (mob.charAt(i) > 0 || mob.charAt(i) < 9) c = c + 1;
+  const mobileRegex = /^[0-9]{10}$/;
+  if (mobileRegex.test(mob)) {
+    mField.classList.remove("error");
+    mField.classList.add("valid");
+    return true;
   }
-  if (c != 10) {
+  else if (mob.length == 0) {
+    mField.classList.add("error");
+    mField.classList.remove("valid");
+    return false;
+
+  }
+  else {
     mField.classList.add("error");
     mField.classList.remove("valid");
     let errorTxt4 = mField.querySelector(".error-txt");
-    mob != "" ? (errorTxt4.innerText = "Enter a valid Mobile Number") : "";
+    errorTxt4.innerText = "Enter a valid 10-digit Mobile Number";
     return false;
-  } else {
-    mField.classList.remove("error");
-    mField.classList.add("valid");
-
-    return true;
   }
 }
-
